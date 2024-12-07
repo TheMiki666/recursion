@@ -38,6 +38,6 @@ self.fibs_pure_rec(num, counter, response)
 This method uses three arguments: the number, the counter and the response array
 The number is given by user thought self.fibs_pure_rec(num)
 The other two arguments ara just for recursive internal use
-I'ts time complexity is O(n)
+I'ts time complexity is O(log n) (I think!)
 
 
