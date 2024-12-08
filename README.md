@@ -21,7 +21,7 @@ Merge sort is one such sorting algorithm, and can be much faster than other algo
 
 #SOLUTIONS EXPLANATION:
 
-SOLVE THE FIBONACCI PROBLEM
+HOW I SOLVED THE FIBONACCI PROBLEM
 
 We have implemented not two, but three possible solutions to the PROBLEM
 1. The iterative method self.fibs(num) uses just an iterative block. 
@@ -40,4 +40,16 @@ The number is given by user thought self.fibs_pure_rec(num)
 The other two arguments ara just for recursive internal use
 I'ts time complexity is O(log n) (I think!)
 
+HOW I SOLVED THE MERGE SORT PROBLEM
+The "static" class MergeSort has two public (static) methods:
+ #create_random_array creates a random lineal disordered array (that we will use to try the method)
+ #sort_array sorts a lineal disordered array using Merge Sort algorithm
+This last method uses 4 private (static) methods to apply the algorithm:
+ #to_tree is the first step: is a recursive method with transforms a lineal array in a tree array (each branch has a number, a branch or two branches maximum)
+ #is_lineal? determines if an array is lineal or not (branched)
+ #merge_sorted_lineal_arrays merged two previously sorted lineal array in another sorted lineal array
+ Finally, #to_lineal is another recursive method thet uses #is_lineal? and merge_sorted_lineal_arrays to do the magic:
+  - If it finds a lineal branch, it assumes that is already sorted, and just returns it
+  - If it finds a ramified branch, it flattens the array one level and calls itself recursively
+  - If it finds two branches, calls itself recursively for each separated branch and after that calls #merge_sorted_lineal_arrays to merge both
 

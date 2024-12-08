@@ -1,9 +1,18 @@
 class MergeSort 
+
+  # Creates a random array
   def self.create_random_array(size = 25, min_value=1, max_value=100)
     response=[]
     size.times {response << rand(max_value - min_value) + min_value}
     response
   end
+
+  # Sorts an (lineal) disordered array using the Merge-Sort algorithm
+  def self.sort_array(array)
+    self.to_lineal(self.to_tree(array))
+  end
+
+  private
 
   # This method splits a lineal array in a tree of arrays
   def self.to_tree(lineal_array)
@@ -40,9 +49,17 @@ class MergeSort
     return true
   end
 
-  # This method transforms a tree two-branched array in a lineal sorted array
-  def self.to_lineal(tree_array, lineal_array)
-    
-
+  # This method transforms a tree two-branched array in a lineal sorted array,
+  # and joins it to the lineal array we pass in the second argument
+  def self.to_lineal(tree_array)
+    if self.is_lineal?(tree_array)
+      return tree_array
+    elsif tree_array.size == 1
+      # We flatten the array one level
+      return self.to_lineal(tree_array[0])
+    else
+      # Size = 2
+      return self.merge_sorted_lineal_arrays(self.to_lineal(tree_array[0]), self.to_lineal(tree_array[1]))
+    end
   end
 end
